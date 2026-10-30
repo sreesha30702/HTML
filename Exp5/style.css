@@ -1,0 +1,15 @@
+body{
+        background-color:lightblue;}
+h1{
+        color:purple;
+        text-align:center;
+}
+p{
+        color:darkgreen;
+        font-size:20px;
+}
+button{
+        background-color:black;
+        color:white;
+        padding:10px;
+}
