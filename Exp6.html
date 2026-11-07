@@ -1,0 +1,40 @@
+<html>
+<head><title>String and Math Functions</title></head>
+<body>
+<center>
+<font size=32 color="brown">String and Math Functions</font>
+</center>
+<script>
+var str=prompt("Enter a string:");
+var str2=prompt("Enter another string:");
+document.write("<h1><font color='red'><u>String Functions</u></font></h1><br>");
+document.write("Original String : "+str+"<br><br>");
+document.write("Length : "+str.length+"<br><br>");
+document.write("Uppercase : "+str.toUpperCase()+"<br><br>");
+document.write("Lowercase : "+str.toLowerCase()+"<br><br>");
+document.write("Character at 2 : "+str.charAt(2)+"<br><br>");
+document.write("Concatenation: "+str.concat(str2)+"<br><br>");
+document.write("Index of : "+str.indexOf("a")+"<br><br>");
+document.write("Last Index of : "+str.lastIndexOf("a")+"<br><br>");
+document.write("Slice : "+str.slice(0,4)+"<br><br>");
+document.write("Trim : "+str2.trim()+"<br><br>");
+document.write("Split : "+str.split(" ")+"<br><br>");
+document.write("Sub string : "+str.substring(0,11)+"<br><br>");
+document.write("Replace : "+str.replace(str.substring(0,3),"HTML")+"<br><br>");
+var num1=Number(prompt("Enter a number:"));
+var num2=Number(prompt("Enter another number:"));
+document.write("<h1><font color='red'><u>Math Functions</u></font></h1><br>");
+document.write("num1:"+num1+"<br><br>");
+document.write("num2:"+num2+"<br><br>");
+document.write("Square Root  : "+Math.sqrt(num1)+"<br><br>");
+document.write("Power : "+Math.pow(num1,num2)+"<br><br>");
+document.write("Round : "+Math.round(num1)+"<br><br>");
+document.write("Ceil  : "+Math.ceil(num1)+"<br><br>");
+document.write("Floor  : "+Math.floor(num1)+"<br><br>");                                                                                                                                                       
+document.write("Absolute value : "+Math.abs(num1)+"<br><br>");
+document.write("Random number between 0 and 1 : "+Math.random()+"<br><br>");
+document.write("Maximum : "+Math.max(num1,num2)+"<br><br>");
+document.write("Minimum : "+Math.min(num1,num2)+"<br><br>");
+</script>
+</body>
+</html>
