@@ -1,15 +1,8 @@
 body{
-        background-color:lightblue;}
-h1{
-        color:purple;
+        background-color:lightblue;
+    }
+h3{
+        color:orange;
         text-align:center;
-}
-p{
-        color:darkgreen;
-        font-size:20px;
-}
-button{
-        background-color:black;
-        color:white;
-        padding:10px;
-}
+        font-size:25px;
+  }
