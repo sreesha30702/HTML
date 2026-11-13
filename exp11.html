@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 25px;
+            background-color: white;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        function validateForm() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let phone = document.getElementById("phone").value;
+            let dob = document.getElementById("dob").value;
+
+            if (name.trim() == "") {
+                alert("Please enter your full name");
+                return false;
+            }
+
+            if (!/^[A-Za-z ]+$/.test(name)) {
+                alert("Enter a valid name");
+                return false;
+            }
+
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+                alert("Enter a valid email address");
+                return false;
+            }
+
+            if (password.length < 6) {
+                alert("Password must contain at least 6 characters");
+                return false;
+            }
+
+            if (!/^[0-9]{10}$/.test(phone)) {
+                alert("Enter a valid 10 digit phone number");
+                return false;
+            }
+
+            if (dob == "") {
+                alert("Please select your date of birth");
+                return false;
+            }
+
+            if (new Date(dob) > new Date()) {
+                alert("Date of birth cannot be in the future");
+                return false;
+            }
+
+            alert("Registration Successful!");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>REGISTRATION FORM</h2>
+
+        <form onsubmit="return validateForm()">
+
+            <label>Full Name:</label>
+            <input type="text" id="name">
+
+            <label>Email:</label>
+            <input type="text" id="email">
+
+            <label>Password:</label>
+            <input type="password" id="password">
+
+            <label>Phone Number:</label>
+            <input type="text" id="phone">
+
+            <label>Date of Birth:</label>
+            <input type="date" id="dob">
+
+            <button type="submit">Register</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

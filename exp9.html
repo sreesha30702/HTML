@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Mouse Over</title>
+</head>
+<body>
+
+<h1 id="text">Hello world</h1>
+
+<img src="nature.jpeg"
+     width="300"
+     height="200"
+     onmouseover="onmouse()"
+     onmouseout="outmouse()"
+     id="image">
+
+<script>
+function onmouse() {
+    document.getElementById('text').innerText = 'Welcome to my page';
+    document.getElementById('image').src = '/home/ksb/Sreesha/giphy-2021-gifs-and-clips-animation-itsnicethat-02.webp';
+}
+
+function outmouse() {
+    document.getElementById('text').innerText = 'Hello world';
+    document.getElementById('image').src = '/home/ksb/Sreesha/images.jpeg';
+}
+</script>
+
+</body>
+</html>

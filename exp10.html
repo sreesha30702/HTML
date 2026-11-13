@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Examination</title>
+
+    <script>
+    function calculateResult()
+    {
+        var score = 0;
+
+        var q1 = document.querySelector('input[name="q1"]:checked');
+        var q2 = document.querySelector('input[name="q2"]:checked');
+        var q3 = document.querySelector('input[name="q3"]:checked');
+
+        if(q1 && q1.value == "a")
+            score++;
+
+        if(q2 && q2.value == "b")
+            score++;
+
+        if(q3 && q3.value == "c")
+            score++;
+
+        document.getElementById("result").innerHTML =
+        "Your Score is: " + score + " / 3";
+    }
+    </script>
+</head>
+
+<body>
+
+    <h2>Online Examination</h2>
+
+    <form>
+
+        <p>1. Which language is used for web development?</p>
+
+        <input type="radio" name="q1" value="a"> HTML<br>
+        <input type="radio" name="q1" value="b"> Python<br>
+        <input type="radio" name="q1" value="c"> C<br>
+
+        <p>2. Which is a JavaScript output method?</p>
+
+        <input type="radio" name="q2" value="a"> scanf()<br>
+        <input type="radio" name="q2" value="b"> alert()<br>
+        <input type="radio" name="q2" value="c"> printf()<br>
+
+        <p>3. Which symbol is used for comments in JavaScript?</p>
+
+        <input type="radio" name="q3" value="a"> #<br>
+        <input type="radio" name="q3" value="b"> <!-- --><br>
+        <input type="radio" name="q3" value="c"> //<br><br>
+
+        <input type="button" value="Submit Exam"
+        onclick="calculateResult()">
+
+    </form>
+
+    <h3 id="result"></h3>
+
+</body>
+</html>
