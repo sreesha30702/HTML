@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Examination</title>
+
+    <style>
+        body {
+            background-color: yellow;
+            font-family: Arial;
+        }
+
+        h2 {
+            color: blue;
+            text-align: center;
+        }
+
+        .registration {
+            text-align: center;
+            color: blue;
+        }
+
+        .exam {
+            color: blue;
+            display: none;
+        }
+
+        .question {
+            color: red;
+        }
+
+        #timer {
+            color: red;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #result {
+            color: green;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        input[type="button"] {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        var timeLeft = 600;
+        var timerInterval;
+
+        function startExam()
+        {
+            var name = document.getElementById("sname").value;
+            var regno = document.getElementById("regno").value;
+
+            if(name == "" || regno == "")
+            {
+                alert("Please enter Name and Register Number");
+                return;
+            }
+
+            document.getElementById("student").style.display = "none";
+
+            document.getElementById("exam").style.display = "block";
+
+            document.getElementById("studentName").innerHTML = name;
+            document.getElementById("studentReg").innerHTML = regno;
+
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer()
+        {
+            var minutes = Math.floor(timeLeft / 60);
+            var seconds = timeLeft % 60;
+
+            document.getElementById("timer").innerHTML =
+                "Time Left: " + minutes + ":" +
+                (seconds < 10 ? "0" : "") + seconds;
+
+            if(timeLeft <= 0)
+            {
+                clearInterval(timerInterval);
+                alert("Time is Over! Exam Submitted.");
+                calculateResult();
+                return;
+            }
+
+            timeLeft--;
+        }
+
+        function calculateResult()
+        {
+            clearInterval(timerInterval);
+
+            var score = 0;
+
+            var answers = ["a","b","c","a","b","b","b","a","a","c"];
+
+            for(var i = 1; i <= 10; i++)
+            {
+                var q = document.querySelector(
+                    'input[name="q' + i + '"]:checked'
+                );
+
+                if(q && q.value == answers[i-1])
+                {
+                    score++;
+                }
+            }
+
+            document.getElementById("exam").style.display = "none";
+
+            document.getElementById("result").innerHTML =
+                "<h2>Examination Result</h2>" +
+                "Student Name: " +
+                document.getElementById("sname").value + "<br><br>" +
+                "Register Number: " +
+                document.getElementById("regno").value + "<br><br>" +
+                "Your Score is: " + score + " / 10";
+        }
+    </script>
+</head>
+
+<body>
+
+    <h2>Online Examination</h2>
+
+    <!-- STUDENT REGISTRATION -->
+
+    <div class="registration" id="student">
+
+        <h3>Student Registration</h3>
+
+        Enter Name:
+        <input type="text" id="sname" placeholder="Enter Name">
+        <br><br>
+
+        Register Number:
+        <input type="text" id="regno" placeholder="Enter Register Number">
+        <br><br>
+
+        <input type="button" value="Start Exam"
+        onclick="startExam()">
+
+    </div>
+
+
+    <!-- ONLINE EXAMINATION -->
+
+    <div class="exam" id="exam">
+
+        <h2>Online Examination</h2>
+
+        <p>Student Name: <span id="studentName"></span></p>
+        <p>Register Number: <span id="studentReg"></span></p>
+
+        <p id="timer">Time Left: 10:00</p>
+
+        <hr>
+
+        <p class="question">
+        1. Which language is used for web development?
+        </p>
+
+        <input type="radio" name="q1" value="a"> HTML<br>
+        <input type="radio" name="q1" value="b"> Python<br>
+        <input type="radio" name="q1" value="c"> C<br>
+
+        <p class="question">
+        2. Which is a JavaScript output method?
+        </p>
+
+        <input type="radio" name="q2" value="a"> scanf()<br>
+        <input type="radio" name="q2" value="b"> alert()<br>
+        <input type="radio" name="q2" value="c"> printf()<br>
+
+        <p class="question">
+        3. Which symbol is used for comments in JavaScript?
+        </p>
+
+        <input type="radio" name="q3" value="a"> #<br>
+        <input type="radio" name="q3" value="b"> &lt;<br>
+        <input type="radio" name="q3" value="c"> //<br>
+
+        <p class="question">
+        4. What does HTML stand for?
+        </p>
+
+        <input type="radio" name="q4" value="a">
+        Hyper Text Markup Language<br>
+
+        <input type="radio" name="q4" value="b">
+        High Text Machine Language<br>
+
+        <input type="radio" name="q4" value="c">
+        Home Tool Markup Language<br>
+
+        <p class="question">
+        5. Which tag is used to create a link in HTML?
+        </p>
+
+        <input type="radio" name="q5" value="a"> link<br>
+        <input type="radio" name="q5" value="b"> a<br>
+        <input type="radio" name="q5" value="c"> href<br>
+
+        <p class="question">
+        6. What is the output of typeof 10?
+        </p>
+
+        <input type="radio" name="q6" value="a"> string<br>
+        <input type="radio" name="q6" value="b"> number<br>
+        <input type="radio" name="q6" value="c"> int<br>
+
+        <p class="question">
+        7. Which loop repeats until condition becomes false?
+        </p>
+
+        <input type="radio" name="q7" value="a"> for<br>
+        <input type="radio" name="q7" value="b"> while<br>
+        <input type="radio" name="q7" value="c"> if<br>
+
+        <p class="question">
+        8. Which bracket is used for function?
+        </p>
+
+        <input type="radio" name="q8" value="a"> ()<br>
+        <input type="radio" name="q8" value="b"> []<br>
+        <input type="radio" name="q8" value="c"> {}<br>
+
+        <p class="question">
+        9. JavaScript file extension is?
+        </p>
+
+        <input type="radio" name="q9" value="a"> .js<br>
+        <input type="radio" name="q9" value="b"> .java<br>
+        <input type="radio" name="q9" value="c"> .html<br>
+
+        <p class="question">
+        10. Which keyword is used to declare a constant value?
+        </p>
+
+        <input type="radio" name="q10" value="a"> let<br>
+        <input type="radio" name="q10" value="b"> var<br>
+        <input type="radio" name="q10" value="c"> const<br>
+
+        <br>
+
+        <center>
+            <input type="button"
+            value="Submit Exam"
+            onclick="calculateResult()">
+        </center>
+
+    </div>
+
+    <!-- RESULT -->
+
+    <h3 id="result"></h3>
+
+</body>
+</html>
+
